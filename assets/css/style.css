@@ -1306,6 +1306,33 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .access__actions .btn { flex: 1 1 220px; min-width: 0; }
 @media (max-width: 899px) { .access__wrap { grid-template-columns: 1fr; gap: 28px; } }
 
+/* スマホでは2カラムだと見出し列に押されて値が細切れに折り返すため、縦積みにする */
+@media (max-width: 639px) {
+  .access__table tr {
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+  .access__table tr:last-child { border-bottom: 0; }
+  .access__table th,
+  .access__table td {
+    display: block;
+    width: auto;
+    border-bottom: 0;
+    white-space: normal;
+  }
+  .access__table th {
+    background: var(--cyan-ll);
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 14px 0 8px;
+    font-size: 13px;
+    letter-spacing: .06em;
+    width: fit-content;
+  }
+  .access__table td { padding: 0 2px 14px; }
+  .access__actions .btn { flex: 1 1 100%; }
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */

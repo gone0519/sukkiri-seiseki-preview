@@ -79,6 +79,11 @@
 .t-senior .faq__item summary { font-size: 19px; }
 .t-senior .access__table th,
 .t-senior .access__table td { font-size: 18px; padding: 18px 18px; }
+/* 縦積みになるスマホでは style.css 側の余白・見出しサイズを尊重する */
+@media (max-width: 639px) {
+  .t-senior .access__table th { font-size: 14.5px; padding: 7px 13px; }
+  .t-senior .access__table td { font-size: 17px; padding: 0 2px 15px; }
+}
 .t-senior .price__row dt small { font-size: 15px; }
 .t-senior .follow__btn { font-size: 14px; padding-block: 14px; }
 .t-senior .follow__ico { width: 26px; height: 26px; }
