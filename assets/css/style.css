@@ -1108,6 +1108,8 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .voice__rating b { font-family: var(--f-en); font-size: 34px; color: var(--navy); }
 .voice__rating small { font-size: 13px; color: var(--gray); }
 .voice__list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+/* 2件のときは2カラムで中央寄せ（3カラムのまま左に寄ると間が抜けて見えるため） */
+.voice__list--2 { grid-template-columns: repeat(2, 1fr); max-width: 820px; margin-inline: auto; }
 .voice__list li {
   background: #fff;
   border: 1px solid var(--border);
