@@ -1,0 +1,557 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   スッキリ整骨院 聖蹟桜ヶ丘院 — lp.css
+   広告用 独立LP（肩こり／腰痛／女性向け／年配の方向け）専用スタイル。
+   style.css を先に読み込んだうえで、この順で読み込むこと。
+
+   テーマは <body class="t-xxxx"> で切り替える。style.css の全コンポーネントが
+   CSS変数を参照しているため、変数の上書きだけで配色が一括で入れ替わる。
+   ========================================================================== */
+
+/* ==========================================================================
+   THEME : 肩こり（ブランドカラーそのまま／グリーン＋オレンジ）
+   ========================================================================== */
+.t-katakori {
+  --hd-h: 64px;
+}
+
+/* ==========================================================================
+   THEME : 腰痛（ブランドのグリーンを基調に、アクセントを深いテラコッタへ）
+   ========================================================================== */
+.t-youtsu {
+  --hd-h: 64px;
+  --cyan:    #b8541f;
+  --cyan-d:  #96420f;
+  --cyan-l:  #fbeee7;
+  --cyan-ll: #fdf8f5;
+  --bg-soft: #f9f6f2;
+}
+
+/* ==========================================================================
+   THEME : 女性向け（深いプラム＋ローズ。丸みと明朝を強めた柔らかいトーン）
+   ========================================================================== */
+.t-women {
+  --hd-h: 64px;
+  --navy:    #4c3040;
+  --navy-d:  #37212d;
+  --navy-l:  #6d4a5d;
+  --cyan:    #c2718a;
+  --cyan-d:  #a4576f;
+  --cyan-l:  #f9eef2;
+  --cyan-ll: #fdf9fa;
+  --gold:    #d9b98a;
+  --gold-d:  #c2a172;
+  --red:     #c4556e;
+  --bg-soft: #faf5f4;
+  --border:  #ecdfe3;
+  --r: 20px;
+  --shadow:    0 10px 30px rgba(76, 48, 64, .08);
+  --shadow-lg: 0 18px 50px rgba(76, 48, 64, .14);
+}
+.t-women .btn { border-radius: 999px; }
+.t-women .sec__title,
+.t-women .fv__title,
+.t-women .lp-fv__title { letter-spacing: .04em; }
+
+/* ==========================================================================
+   THEME : 年配の方向け（配色はブランドのまま。文字を大きく、余白を広く取る）
+   ========================================================================== */
+.t-senior {
+  --hd-h: 68px;
+  --ink:      #262b23;  /* 本文をやや濃くしてコントラストを上げる */
+  --ink-soft: #454c40;
+}
+
+/* 年配向け：可読性の底上げ（文字サイズ・行間・コントラスト・タップ領域） */
+.t-senior { font-size: 18.5px; line-height: 2.1; }
+.t-senior .sec__lead { font-size: 18px; }
+.t-senior .btn { padding: 18px 32px; font-size: 19px; }
+.t-senior .btn b { font-size: 22px; }
+.t-senior .btn small { font-size: 14px; }
+.t-senior .btn--lg { padding: 22px 40px; font-size: 21px; min-width: 300px; }
+.t-senior .check__list li { font-size: 19px; padding-block: 22px; }
+.t-senior .cause__body p,
+.t-senior .point__card p,
+.t-senior .flow__list p,
+.t-senior .voice__txt,
+.t-senior .faq__ans { font-size: 18px; }
+.t-senior .faq__item summary { font-size: 19px; }
+.t-senior .access__table th,
+.t-senior .access__table td { font-size: 18px; padding: 18px 18px; }
+.t-senior .price__row dt small { font-size: 15px; }
+.t-senior .follow__btn { font-size: 14px; padding-block: 14px; }
+.t-senior .follow__ico { width: 26px; height: 26px; }
+.t-senior .lp-hd__tel b { font-size: 27px; }
+
+/* ==========================================================================
+   LP HEADER（広告LP用：ナビゲーションなし・電話とWeb予約に一点集中）
+   ========================================================================== */
+.lp-hd {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--hd-h);
+  background: rgba(255, 255, 255, .97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .25s;
+}
+.lp-hd.is-scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, .1); }
+.lp-hd__inner {
+  width: min(100% - 28px, 1240px);
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.lp-hd__logo { display: flex; align-items: center; gap: 9px; flex: none; margin-right: auto; }
+.lp-hd__logo-mark { display: block; flex: none; }
+.lp-hd__logo-mark img { display: block; width: 38px; height: 38px; border-radius: 7px; }
+.lp-hd__logo-txt { display: flex; flex-direction: column; line-height: 1.25; }
+.lp-hd__logo-txt b { font-family: var(--f-serif); font-size: 17px; color: var(--navy); letter-spacing: .03em; }
+.lp-hd__logo-txt small { font-size: 10.5px; color: var(--cyan-d); letter-spacing: .09em; }
+
+.lp-hd__side { display: flex; align-items: center; gap: 12px; flex: none; }
+.lp-hd__tel { display: flex; flex-direction: column; line-height: 1.2; text-align: right; }
+.lp-hd__tel small { font-size: 10.5px; color: var(--gray); letter-spacing: .06em; }
+.lp-hd__tel b { font-family: var(--f-en); font-size: 23px; color: var(--navy); }
+.lp-hd__btn { padding: 11px 24px; font-size: 14.5px; }
+
+@media (max-width: 767px) {
+  .lp-hd__tel { display: none; }
+  .lp-hd__logo-txt b { font-size: 15px; }
+  .lp-hd__btn { padding: 10px 18px; font-size: 13.5px; }
+}
+
+/* ==========================================================================
+   LP FV
+   ========================================================================== */
+.lp-fv {
+  position: relative;
+  padding-block: clamp(34px, 5vw, 62px) clamp(70px, 9vw, 116px);
+  overflow: hidden;
+}
+.lp-fv__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(58% 78% at 88% 8%, color-mix(in srgb, var(--navy-l) 22%, transparent) 0%, transparent 62%),
+    radial-gradient(52% 72% at 4% 92%, color-mix(in srgb, var(--gold) 18%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg, #fdfcf6 0%, var(--cyan-ll) 100%);
+}
+.lp-fv__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, .045) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.lp-fv__inner {
+  position: relative;
+  width: min(100% - 40px, var(--wrap));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1.12fr .88fr;
+  gap: 44px;
+  align-items: center;
+}
+.lp-fv__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.lp-fv__tags li {
+  background: var(--navy);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  padding: 5px 15px;
+  border-radius: 999px;
+}
+.lp-fv__tags li:nth-child(even) { background: var(--cyan-d); }
+/* 立地タグは金色で最優先に見せる */
+.lp-fv__tags li.is-access,
+.lp-fv__tags li.is-access:nth-child(even) {
+  background: var(--gold);
+  color: var(--navy-d);
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.lp-fv__tags li.is-access svg { width: 14px; height: 14px; flex: none; }
+
+/* ヘッダーの立地バッジ（PCのみ） */
+.lp-hd__access {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  margin-left: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--cyan-l);
+  color: var(--navy);
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.lp-hd__access svg { width: 15px; height: 15px; color: var(--cyan-d); flex: none; }
+@media (max-width: 1099px) { .lp-hd__access { display: none; } }
+.lp-fv__title {
+  font-family: var(--f-serif);
+  font-weight: 700;
+  font-size: clamp(28px, 4.1vw, 44px);
+  line-height: 1.45;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+.lp-fv__title em {
+  font-style: normal;
+  position: relative;
+  color: var(--cyan-d);
+  z-index: 0;
+}
+.lp-fv__title em::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: .08em;
+  height: .3em;
+  background: color-mix(in srgb, var(--gold) 55%, transparent);
+  z-index: -1;
+}
+.lp-fv__lead { font-size: 16px; margin-bottom: 24px; }
+.lp-fv__lead b { color: var(--cyan-d); }
+.lp-fv__cta { display: flex; flex-wrap: wrap; gap: 13px; }
+.lp-fv__cta .btn { flex: 1 1 250px; min-width: 0; }
+.lp-fv__micro { margin-top: 14px; font-size: 13px; color: var(--ink-soft); }
+
+.lp-fv__visual { position: relative; }
+.lp-fv__price {
+  position: absolute;
+  left: -16px;
+  bottom: 18px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 50%;
+  width: 146px;
+  height: 146px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  line-height: 1.3;
+  box-shadow: var(--shadow-lg);
+  rotate: -8deg;
+}
+.lp-fv__price small { display: block; font-size: 11.5px; letter-spacing: .06em; }
+.lp-fv__price b { display: block; font-size: 22px; margin-block: 2px; }
+.lp-fv__price b span { font-size: 14px; }
+
+.lp-fv__wave {
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 56px;
+  background: #fff;
+  clip-path: ellipse(75% 100% at 50% 100%);
+}
+
+@media (max-width: 899px) {
+  .lp-fv { padding-block: 20px clamp(60px, 8vw, 100px); }
+
+  /* 見出し → 画像 → キャンペーン → タグ → リード → CTA の順に組み替える。
+     .lp-fv__body を display:contents にして、中の要素を直接グリッドアイテムにする */
+  .lp-fv__inner { grid-template-columns: 1fr; gap: 0; }
+  .lp-fv__body { display: contents; }
+  .fv__station   { order: 0; }
+  .lp-fv__title  { order: 1; margin-bottom: 16px; }
+  .lp-fv__visual { order: 2; max-width: none; width: 100%; margin-inline: 0; }
+  .lp-fv__tags   { order: 3; margin: 22px 0 12px; }
+  .lp-fv__lead   { order: 4; margin-bottom: 22px; }
+  .lp-fv__cta    { order: 5; }
+  .lp-fv__micro  { order: 6; }
+
+  .lp-fv__price { display: none; }
+  .lp-fv__visual .fv__camp {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border-radius: var(--r);
+    background: linear-gradient(135deg, var(--red) 0%, #bd2a30 100%);
+    color: #fff;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .lp-fv__tags { gap: 6px; margin-bottom: 14px; }
+  .lp-fv__tags li { font-size: 11.5px; padding: 4px 12px; }
+  .lp-fv__title { font-size: clamp(23px, 6.6vw, 34px); margin-bottom: 14px; }
+  .lp-fv__lead { font-size: 15px; margin-bottom: 18px; }
+  /* 強制改行はスマホでは無効化（行があふれるため） */
+  .lp-fv__lead br { display: none; }
+  .lp-fv__cta { flex-direction: column; }
+  .lp-fv__cta .btn { width: 100%; flex: none; }
+  .lp-fv__micro { font-size: 12.5px; }
+}
+
+/* ==========================================================================
+   CHECK LIST（お悩みチェック）
+   ========================================================================== */
+.check { background: var(--bg-soft); }
+.check__box {
+  background: #fff;
+  border: 2px solid var(--cyan);
+  border-radius: var(--r);
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: var(--shadow);
+}
+.check__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 32px; }
+.check__list li {
+  position: relative;
+  padding: 16px 0 16px 42px;
+  font-weight: 500;
+  border-bottom: 1px dashed var(--border);
+}
+.check__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--cyan);
+  border-radius: 5px;
+  background: #fff;
+}
+.check__list li::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 8px;
+  height: 14px;
+  border-right: 3px solid var(--cyan);
+  border-bottom: 3px solid var(--cyan);
+  rotate: 42deg;
+  translate: 0 -68%;
+}
+.check__foot {
+  margin-top: 26px;
+  text-align: center;
+  font-family: var(--f-serif);
+  font-size: clamp(18px, 3vw, 25px);
+  line-height: 1.7;
+  color: var(--navy);
+}
+.check__foot b { color: var(--cyan-d); }
+@media (max-width: 767px) { .check__list { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   CAUSE（原因の解説）
+   ========================================================================== */
+.cause__inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 52px;
+  align-items: center;
+}
+.cause__inner--rev { grid-template-columns: 380px 1fr; }
+.cause__inner--rev .cause__visual { order: -1; }
+.cause__title {
+  font-family: var(--f-serif);
+  font-size: clamp(22px, 3.6vw, 33px);
+  line-height: 1.6;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+.cause__title em { font-style: normal; color: var(--cyan-d); }
+.cause__body p { margin-bottom: 16px; color: var(--ink-soft); }
+.cause__body p:last-child { margin-bottom: 0; }
+.cause__body b { color: var(--cyan-d); }
+/* .cause__body p より詳細度を上げる */
+.cause__body > .cause__note {
+  margin-top: 22px;
+  background: var(--cyan-l);
+  border-left: 4px solid var(--cyan);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+  font-size: 15px;
+  color: var(--navy);
+  font-weight: 500;
+}
+@media (max-width: 899px) {
+  .cause__inner,
+  .cause__inner--rev { grid-template-columns: 1fr; gap: 26px; }
+  .cause__inner--rev .cause__visual { order: 0; }
+  .cause__visual { max-width: 340px; margin-inline: auto; width: 100%; }
+}
+
+/* ==========================================================================
+   POINT（当院が選ばれる理由：横並びカード）
+   ========================================================================== */
+.point { background: var(--cyan-ll); }
+.point__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.point__card {
+  position: relative;
+  background: #fff;
+  border-radius: var(--r);
+  padding: 44px 26px 28px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.point__num {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  translate: -50% 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--f-en);
+  font-size: 19px;
+  display: grid;
+  place-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .22);
+}
+.point__icon { width: 54px; height: 54px; margin: 6px auto 14px; color: var(--cyan); }
+.point__icon svg { width: 100%; height: 100%; display: block; }
+.point__card h3 {
+  font-family: var(--f-serif);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.point__card p { font-size: 14.5px; color: var(--ink-soft); text-align: left; }
+@media (max-width: 899px) {
+  .point__grid { grid-template-columns: 1fr; gap: 40px; max-width: 520px; margin-inline: auto; }
+}
+
+/* ==========================================================================
+   TARGET COURSE（このLPの主役メニュー）
+   ========================================================================== */
+.course__card {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+  background: #fff;
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--cyan);
+}
+.course__card .ph { border-radius: 0; aspect-ratio: auto; min-height: 300px; border: 0; }
+.course__body { padding: clamp(26px, 3.4vw, 40px); display: flex; flex-direction: column; }
+/* .course__body > p より詳細度を上げる（そうしないと文字色が上書きされる） */
+.course__body > .course__label {
+  align-self: flex-start;
+  background: var(--red);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.course__body h3 {
+  font-family: var(--f-serif);
+  font-size: clamp(21px, 3vw, 28px);
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.course__body > p { color: var(--ink-soft); font-size: 15px; margin-bottom: 18px; }
+.course__spec { display: grid; gap: 8px; margin-bottom: 22px; }
+.course__spec li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--navy);
+}
+.course__spec li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: .55em;
+  width: 8px;
+  height: 14px;
+  border-right: 3px solid var(--cyan);
+  border-bottom: 3px solid var(--cyan);
+  rotate: 42deg;
+  translate: 0 -50%;
+}
+.course__price {
+  margin-top: auto;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 2px dashed var(--border);
+}
+.course__price s { font-size: 15px; color: var(--gray); }
+.course__price strong { font-family: var(--f-en); font-size: clamp(38px, 6vw, 54px); color: var(--red); line-height: 1; }
+.course__price span { font-size: 14px; color: var(--gray); }
+@media (max-width: 899px) {
+  .course__card { grid-template-columns: 1fr; }
+  .course__card .ph { min-height: 220px; aspect-ratio: 16 / 9; }
+}
+
+/* ==========================================================================
+   LP FOOTER（簡易版）
+   ========================================================================== */
+.lp-ft { background: var(--navy-d); color: rgba(255, 255, 255, .86); padding: 44px 0 0; }
+.lp-ft__inner {
+  width: min(100% - 40px, var(--wrap));
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 32px;
+}
+.lp-ft__logo { display: flex; flex-direction: column; margin-bottom: 12px; }
+.lp-ft__logo b { font-family: var(--f-serif); font-size: 21px; color: #fff; letter-spacing: .04em; }
+.lp-ft__logo small { font-size: 12px; color: var(--gold); letter-spacing: .09em; }
+.lp-ft__addr { font-size: 13.5px; line-height: 2; }
+.lp-ft__addr a { color: var(--gold); font-family: var(--f-en); font-size: 16px; }
+.lp-ft__links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13.5px; }
+.lp-ft__links a { text-decoration: underline; text-underline-offset: 3px; }
+.lp-ft__copy {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, .6);
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+}
+
+/* ==========================================================================
+   追従CTA：LPは全幅で常時表示（PCでも出す）
+   ========================================================================== */
+.lp-body .follow { display: grid; }
+@media (min-width: 1180px) {
+  .lp-body .follow {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    width: 260px;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    gap: 8px;
+    background: none;
+    box-shadow: none;
+  }
+  .lp-body .follow__btn {
+    flex-direction: row;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    font-size: 15px;
+    box-shadow: var(--shadow-lg);
+  }
+}
