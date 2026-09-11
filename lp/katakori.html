@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18392591325"></script>
 <script>
@@ -10,7 +11,31 @@
 
   gtag('config', 'AW-18392591325');
 </script>
-<meta charset="UTF-8">
+<!-- Event snippet for ページビュー conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18392591325/8LudCMCopeQcEN3XosJE',
+      'value': 1.0,
+      'currency': 'JPY',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+<script>
+  // 電話・LINEボタンのタップをコンバージョンとして送信（遷移はリンク本来の動作に任せる）
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="https://lin.ee/"]');
+    if (a) gtag_report_conversion();
+  });
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>肩こり改善なら｜スッキリ整骨院 聖蹟桜ヶ丘院｜初回1,980円・聖蹟桜ヶ丘駅 徒歩4分</title>
 <meta name="description" content="揉んでも翌日には戻る肩こりに。スッキリ整骨院 聖蹟桜ヶ丘院は、肩ではなく肩甲骨・首・骨盤の連動から原因を探る肩こり改善コースをご用意。初回1,980円（40分）。予約不要・年中無休・聖蹟桜ヶ丘駅 東口 徒歩4分。">
